@@ -18,7 +18,10 @@ const Home = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteID, setDeleteID] = useState(0);
 
-  useEffect(() => getData("http://students-marks-recorder.herokuapp.com/"), []);
+  useEffect(
+    () => getData("https://students-marks-recorder.herokuapp.com/"),
+    []
+  );
 
   const getData = url => {
     Axios.get(url)
@@ -35,7 +38,7 @@ const Home = () => {
     if (examSelector) {
       queryParams += `exam_type=${examSelector}`;
     }
-    getData(`http://students-marks-recorder.herokuapp.com?${queryParams}`);
+    getData(`https://students-marks-recorder.herokuapp.com?${queryParams}`);
   };
 
   const handleSectionSelector = value => {
@@ -47,7 +50,7 @@ const Home = () => {
     if (examSelector) {
       queryParams += `exam_type=${examSelector}`;
     }
-    getData(`http://students-marks-recorder.herokuapp.com?${queryParams}`);
+    getData(`https://students-marks-recorder.herokuapp.com?${queryParams}`);
   };
 
   const handleExamSelector = value => {
@@ -59,7 +62,7 @@ const Home = () => {
     if (gradeSelector) {
       queryParams += `grade=${gradeSelector}`;
     }
-    getData(`http://students-marks-recorder.herokuapp.com?${queryParams}`);
+    getData(`https://students-marks-recorder.herokuapp.com?${queryParams}`);
   };
 
   const handleClearFilter = (event = "") => {
@@ -69,7 +72,7 @@ const Home = () => {
     setGradeSelector("");
     setSectionSelector("");
     setExamSelector("");
-    getData("http://students-marks-recorder.herokuapp.com/");
+    getData("https://students-marks-recorder.herokuapp.com/");
   };
 
   const modalTrigger = id => {
@@ -79,7 +82,7 @@ const Home = () => {
 
   const handleDelete = event => {
     event.preventDefault();
-    Axios.delete(`http://students-marks-recorder.herokuapp.com?id=${deleteID}`)
+    Axios.delete(`https://students-marks-recorder.herokuapp.com?id=${deleteID}`)
       .then(resp => {
         modalTrigger(0);
         handleClearFilter();

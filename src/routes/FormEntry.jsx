@@ -28,7 +28,7 @@ class FormEntry extends React.Component {
   componentDidMount() {
     if (this.props.match.path === "/edit/:id") {
       Axios.get(
-        `http://students-marks-recorder.herokuapp.com/user/${this.props.match.params.id}`
+        `https://students-marks-recorder.herokuapp.com/user/${this.props.match.params.id}`
       )
         .then(resp => {
           const cur = resp.data.data;
@@ -56,18 +56,17 @@ class FormEntry extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.props.match.path === "/edit/:id") {
-      Axios.put("http://students-marks-recorder.herokuapp.com/", this.state)
+      Axios.put("https://students-marks-recorder.herokuapp.com/", this.state)
         .then(resp => this.props.history.push("/"))
         .catch(err => console.log(err));
     } else {
-      Axios.post("http://students-marks-recorder.herokuapp.com/", this.state)
+      Axios.post("https://students-marks-recorder.herokuapp.com/", this.state)
         .then(resp => this.props.history.push("/"))
         .catch(err => console.log(err));
     }
   };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Form onSubmit={event => this.handleSubmit(event)}>
